@@ -1,0 +1,108 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #a8e6cf, #dcedc1, #ffd3b6);
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+            padding: 40px;
+            max-width: 650px;
+            width: 100%;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        p.instruction {
+            font-size: 1.2rem;
+            color: #34495e;
+            margin-bottom: 35px;
+            opacity: 0.9;
+        }
+
+        .quote-btn {
+            background: linear-gradient(45deg, #e74c3c, #e67e22);
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 35px;
+        }
+
+        .quote-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(231, 76, 60, 0.6);
+        }
+
+        .quote-btn::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transition: width 0.4s ease, height 0.4s ease;
+        }
+
+        .quote-btn:hover::after {
+            width: 200px;
+            height: 200px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .quote-text {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            line-height: 1.6;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        .quote-author {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
