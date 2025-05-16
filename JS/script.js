@@ -30,8 +30,16 @@ var AllQuotes = ["Be yourself; everyone else is already taken. ― Oscar Wilde",
     "Don't watch the clock; do what it does. Keep going.― Sam Levenson",
 ]
 var selectedQuote = [];
-var quotes = AllQuotes.slice(0, 5);
-// quotes is take a random 5 quotes from AllQuotes
+
+const quotesCopy = [...AllQuotes];
+
+for (let i = quotesCopy.length - 1; i > 0; i--) {
+  const j = Math.floor(Math.random() * (i + 1));
+  [quotesCopy[i], quotesCopy[j]] = [quotesCopy[j], quotesCopy[i]];
+}
+
+var quotes = quotesCopy.slice(0, 5);
+
 var remainingQuotes = quotes.length;
 document.getElementById("remaining-count").innerHTML = remainingQuotes;
 function quotefunc() {
