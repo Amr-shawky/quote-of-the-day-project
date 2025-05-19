@@ -1,3 +1,5 @@
+document.querySelector(".quote-text").innerHTML = "Click the button to get a quote";
+document.querySelector(".reset-btn").style.display = "none";
 var AllQuotes = ["Be yourself; everyone else is already taken. ― Oscar Wilde",
     "I'm selfish, impatient and a little insecure. I make mistakes, I am out of control and at times hard to handle. But if you can't handle me at my worst, then you sure as hell don't deserve me at my best.― Marilyn Monroe",
     "A room without books is like a body without a soul.― Marcus Tullius Cicero",
@@ -30,22 +32,29 @@ var AllQuotes = ["Be yourself; everyone else is already taken. ― Oscar Wilde",
     "Don't watch the clock; do what it does. Keep going.― Sam Levenson",
 ]
 var selectedQuote = [];
-
+var remainingQuotes;
 const quotesCopy = [...AllQuotes];
+// Shuffle the quotes array
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+    }
 
-for (let i = quotesCopy.length - 1; i > 0; i--) {
-  const j = Math.floor(Math.random() * (i + 1));
-  [quotesCopy[i], quotesCopy[j]] = [quotesCopy[j], quotesCopy[i]];
-}
+shuffleArray(quotesCopy);
 
 var quotes = quotesCopy.slice(0, 5);
 
-var remainingQuotes = quotes.length;
+remainingQuotes = quotes.length;
 document.getElementById("remaining-count").innerHTML = remainingQuotes;
 function quotefunc() {
     var randomIndex = Math.floor(Math.random() * quotes.length);
     if (selectedQuote.length >= quotes.length) {
-        document.querySelector(".quote-text").innerHTML = "All quotes have been displayed , if you want to see them again please refresh the page";
+        document.querySelector(".quote-text").innerHTML = "All quotes have been displayed , if you want to see them again click on reset";
+        document.querySelector(".reset-btn").style.display = "inline-block";
+
     }
     else {
         while (selectedQuote.includes(randomIndex)) {
@@ -56,4 +65,14 @@ function quotefunc() {
         document.getElementById("remaining-count").innerHTML = remainingQuotes;
         document.querySelector(".quote-text").innerHTML = quotes[randomIndex];
     }
+}
+function reset() {
+    selectedQuote = [];
+    shuffleArray(quotesCopy);
+    quotes = quotesCopy.slice(0, 5);
+    remainingQuotes = quotes.length;
+    document.getElementById("remaining-count").innerHTML = remainingQuotes;
+    document.querySelector(".quote-text").innerHTML = "Click the button to get a quote";
+    document.querySelector(".reset-btn").style.display = "none";
+
 }
